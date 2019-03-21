@@ -6,8 +6,9 @@ $ git clone git@github.com:misraX/sylius-hub.git
 $ cd sylius-hub
 $ docker-compose up --build -d
 $ docker-compose exec php bin/console sylius:fixtures:load
-$ open http://localhost
+
 ```
+open http://localhost/admin login with user:sylius@example.com pass:sylius
 
 CustomEmails
 ------------
