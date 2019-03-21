@@ -2,25 +2,24 @@ Installation
 ------------
 
 ```bash
-$ wget http://getcomposer.org/composer.phar
-$ php composer.phar create-project sylius/sylius-standard project
-$ cd project
-$ yarn install
-$ yarn build
-$ php bin/console sylius:install
-$ php bin/console server:start
-$ open http://localhost:8000/
+$ git clone git@github.com:misraX/sylius-hub.git
+$ cd sylius-hub
+$ docker-compose up --build -d
+$ docker-compose exec php bin/console sylius:fixtures:load
+$ open http://localhost
 ```
 
 CustomEmails
 ------------
 
-1. Creating an EmailConfiguration model
+1. Creating an EmailConfig model, Linking the model to `sylius_resource`.
 
-2. Adding a menu item under configurations.
+2. Adding an `Email` menu item under configurations.
 
-3. Linking the menu item to a custom controller.
-
-4. Customize the `order_confirmation` sylius email Manager and template to read from the model settings.
+3. Adding `app_admin_emailCofnig` route to `sylius_admin.yaml` routes.
+ 
+4. Customize `sylius_grid` to add `app_admin_emailCofnig` route, fields mapping and actions.
+ 
+5. Customize the `order_confirmation` sylius email Manager and template to read from the model settings.
 
  

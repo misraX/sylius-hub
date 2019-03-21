@@ -10,19 +10,7 @@ parameters:
     sylius_core.public_dir: '%kernel.project_dir%/public'
     
 sylius_grid:
-   
     grids:
-        sylius_admin_order:
-            actions:
-                item:
-                    send:
-                        type: create
-                        label: Send Confirmation Email
-                        options:
-                            link:
-                                route: sylius_admin_order_createion_confirmation_email
-                                parameters:
-                                    id: resource.id
         app_admin_emailCofnig:
             driver:
                 name: doctrine/orm
@@ -50,7 +38,7 @@ sylius_grid:
 sylius_resource:
     resources:
         app.emailCofnig:
-            driver: doctrine/orm # You can use also different driver here
+            driver: doctrine/orm
             classes:
                 model: App\Entity\EmailConfig\EmailConfig
                 

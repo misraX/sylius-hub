@@ -34,10 +34,6 @@ services:
         tags:
             - { name: form.type }
 
-    App\Controller\Order\OrderConfirmationEmailAction:
-        arguments: ['@form.factory', '@twig', '@doctrine.orm.entity_manager']
-        tags: ['controller.service_arguments']
-
     app.listener.admin.menu_builder:
         class: App\Menu\EmailConfig\EmailConfigMenuListener
         tags:
