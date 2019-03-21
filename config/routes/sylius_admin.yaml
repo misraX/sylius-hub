@@ -1,0 +1,49 @@
+sylius_admin:
+    resource: "@SyliusAdminBundle/Resources/config/routing.yml"
+    prefix: /admin
+
+
+sylius_admin_order_createion_confirmation_email:
+    path: /admin/orders/{id}/confirmation-email
+    methods: [GET, POST]
+    options:
+        expose: true
+    defaults:
+        _controller: App\Controller\Order\OrderConfirmationEmailAction
+        _sylius:
+            event: admin_create
+            section: admin
+            permission: true
+#            template: '@SyliusAdminOrderCreationPlugin/Order/create.html.twig'
+#            form:
+#                type: Sylius\AdminOrderCreationPlugin\Form\Type\NewOrderType
+#            factory:
+#                method: ['expr:service("Sylius\\AdminOrderCreationPlugin\\Factory\\OrderFactory")', 'createFromExistingOrder']
+#                arguments: ["expr:service('sylius.repository.order').find($id)"]
+
+
+sylius_admin_email_configuration:
+    path: /admin/emails
+    methods: [GET, POST]
+    defaults:
+        _controller: App\Controller\EmailConfiguration\EmailConfigurationController:getEmails
+        _sylius:
+#            event: admin_create
+            section: admin
+            permission: true
+
+
+app_admin_emailCofnig:
+    prefix: /admin
+    resource: |
+        alias: app.emailCofnig
+        section: admin
+        templates: SyliusAdminBundle:Crud
+        redirect: update
+        grid: app_admin_emailCofnig
+        vars:
+            all:
+                subheader: admin_email_configuration.ui.emailCofnigs
+            index:
+                icon: 'file image outline'
+    type: sylius.resource

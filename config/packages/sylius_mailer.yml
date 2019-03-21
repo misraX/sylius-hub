@@ -1,0 +1,8 @@
+sylius_mailer:
+    sender:
+        name: misrax.com
+        address: no-reply@misrax.com
+#    emails:
+#        movie_added_notification:
+#            subject: A new movie {{ movie.title }} has been submitted
+#            template: App:Email:movieAddedNotification.html.twig

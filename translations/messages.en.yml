@@ -1,0 +1,8 @@
+admin_email_configuration:
+    menu:
+        admin:
+            main:
+                configurations:
+                    emails: Emails
+    ui:
+       emailCofnigs: Emails
