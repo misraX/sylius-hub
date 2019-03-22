@@ -16,6 +16,7 @@
     ],
     "require": {
         "php": "^7.2",
+        "friendsofsymfony/ckeditor-bundle": "^2.0",
         "sylius/sylius": "1.4.*",
         "symfony/flex": "^1.1"
     },

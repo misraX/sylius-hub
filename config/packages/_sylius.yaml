@@ -17,6 +17,14 @@ sylius_grid:
                 options:
                     class: App\Entity\EmailConfig\EmailConfig
             fields:
+                id:
+                    type: string
+                    label: sylius.ui.id
+                    
+                subject:
+                    type: string
+                    label: sylius.ui.subject
+                
                 body:
                     type: string
                     label: sylius.ui.body

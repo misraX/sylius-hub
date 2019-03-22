@@ -3,6 +3,8 @@
 namespace App\Entity\EmailConfig;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 use Sylius\Component\Resource\Model\TimestampableTrait;
 
 /**
@@ -20,6 +22,7 @@ class EmailConfig implements EmailConfigInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank
      */
     private $body;
 
@@ -27,6 +30,12 @@ class EmailConfig implements EmailConfigInterface
      * @ORM\Column(type="array")
      */
     private $type = [];
+
+    /**
+     * @ORM\Column(type="string", length=1000)
+     * @Assert\NotBlank
+     */
+    private $subject;
 
 
     public function getId(): ?int
@@ -54,6 +63,18 @@ class EmailConfig implements EmailConfigInterface
     public function setType(array $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getSubject(): ?string
+    {
+        return $this->subject;
+    }
+
+    public function setSubject(string $subject): self
+    {
+        $this->subject = $subject;
 
         return $this;
     }
