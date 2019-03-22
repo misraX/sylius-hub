@@ -2,13 +2,16 @@
 
 namespace App\Entity\EmailConfig;
 
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\ORM\Mapping as ORM;
+use Psr\Log\LoggerInterface;
+use Sylius\Bundle\CoreBundle\Mailer\Emails;
 use Sylius\Component\Resource\Model\TimestampableTrait;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EmailConfigRepository")
+ * @UniqueEntity("emailType")
  */
 class EmailConfig implements EmailConfigInterface
 {
@@ -27,9 +30,11 @@ class EmailConfig implements EmailConfigInterface
     private $body;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="string", unique=true)
+     * @Assert\Choice(callback="getSyliusEmailTypes")
+     * @Assert\NotBlank
      */
-    private $type = [];
+    private $emailType;
 
     /**
      * @ORM\Column(type="string", length=1000)
@@ -37,17 +42,39 @@ class EmailConfig implements EmailConfigInterface
      */
     private $subject;
 
+    /**
+     * @return array
+     * @throws \ReflectionException
+     */
+    public static function getSyliusEmailTypes()
+    {
+        $reflectionClass = new \ReflectionClass(Emails::class);
+        $emailTypes = $reflectionClass->getConstants();
+        $emailTypeskeys = array_keys($emailTypes);
+        return $emailTypeskeys;
 
+    }
+
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return string|null
+     */
     public function getBody(): ?string
     {
         return $this->body;
     }
 
+    /**
+     * @param string|null $body
+     * @return EmailConfig
+     */
     public function setBody(?string $body): self
     {
         $this->body = $body;
@@ -55,28 +82,40 @@ class EmailConfig implements EmailConfigInterface
         return $this;
     }
 
-    public function getType(): ?array
-    {
-        return $this->type;
-    }
 
-    public function setType(array $type): self
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
+    /**
+     * @return string|null
+     */
     public function getSubject(): ?string
     {
         return $this->subject;
     }
 
+    /**
+     * @param string $subject
+     * @return EmailConfig
+     */
     public function setSubject(string $subject): self
     {
         $this->subject = $subject;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmailType()
+    {
+        return $this->emailType;
+    }
+
+    /**
+     * @param mixed $emailType
+     */
+    public function setEmailType($emailType): void
+    {
+        $this->emailType = $emailType;
     }
 
 }

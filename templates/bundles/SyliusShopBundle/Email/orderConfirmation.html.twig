@@ -1,6 +1,6 @@
 {% block subject %}
     {% if configuration %}
-        {{ configuration.subject }}
+        asdas
     {% else %}
         Order confirmation {% if order.customer and order.customer.email %} {{ order.customer.email }} {% if  order.customer.firstName %} {{ order.customer.firstName }}{% endif %} {% if order.customer.lastName %}{{ order.customer.lastName }}{% endif %}{% endif %}
     {% endif %}
@@ -9,6 +9,7 @@
 {% block body %}
     {{ configuration.body }}
     <br>
+    {{ dump(_context) }}
 
     {% set url = order.channel.hostname is not null ? 'http://' ~ order.channel.hostname ~ path('sylius_shop_order_show', {'tokenValue': order.tokenValue, '_locale': order.localeCode}) : url('sylius_shop_order_show', {'tokenValue': order.tokenValue, '_locale': order.localeCode}) %}
     {% autoescape %}
