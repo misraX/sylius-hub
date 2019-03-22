@@ -43,14 +43,22 @@ class EmailConfig implements EmailConfigInterface
     private $subject;
 
     /**
+     * Choices for email types,
+     *
+     * TO ADD CUSTOM TYPES MERGE THE VALUES WITH THE REFLECTIONCLASS
+     * VALUES.
+     * @param $fullTypes
      * @return array
      * @throws \ReflectionException
      */
-    public static function getSyliusEmailTypes()
+    public static function getSyliusEmailTypes($fullTypes = null)
     {
         $reflectionClass = new \ReflectionClass(Emails::class);
         $emailTypes = $reflectionClass->getConstants();
-        $emailTypeskeys = array_keys($emailTypes);
+        $emailTypeskeys = array_values($emailTypes);
+        if (isset($fullTypes)) {
+            return $emailTypes;
+        }
         return $emailTypeskeys;
 
     }

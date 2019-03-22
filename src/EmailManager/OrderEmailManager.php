@@ -45,7 +45,7 @@ final class OrderEmailManager implements OrderEmailManagerInterface
     public function sendConfirmationEmail(OrderInterface $order): void
     {
         $emailConfig = $this->entityManager->getRepository(EmailConfig::class);
-        $configuration = $emailConfig->find(1);
+        $configuration = $emailConfig->findOneBy(['emailType'=>Emails::ORDER_CONFIRMATION]);
         $this->emailSender->send(Emails::ORDER_CONFIRMATION, [$order->getCustomer()->getEmail()], ['order' => $order, 'configuration' => $configuration]);
     }
 }

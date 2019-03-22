@@ -13,14 +13,27 @@ open http://localhost/admin login with user:sylius@example.com pass:sylius
 CustomEmails
 ------------
 
-1. Creating an EmailConfig model, Linking the model to `sylius_resource`.
+1. Creating an `EmailConfig` model.
 
-2. Adding an `Email` menu item under configurations.
+2. Adding the model to `sylius_resource`
 
-3. Adding `app_admin_emailCofnig` route to `sylius_admin.yaml` routes.
- 
-4. Customize `sylius_grid` to add `app_admin_emailCofnig` route, fields mapping and actions.
- 
-5. Customize the `order_confirmation` sylius email Manager and template to read from the model settings.
+3. Adding an `Email` menu item under the admin main `configurations` menu item.
+
+4. Adding `app_admin_emailConfig` route to `sylius_admin.yaml` routes.
+
+5. Creating EmailConfigType with custom RichText with (CKEditor) and choices with all the available sylius Emails.
+
+6. Adding `EmailConfigType` form type `app_admin_emailConfig.formtype` to `services.yaml`.
+
+7. Overriding  `OrderEmailManager` and register `sylius.email_manager.order` service to replace the default manager.
+
+8. Customize a grid field to render the `body` in index view.
+
+8. Overriding `orderConfirmation.html` to add the new twig context.
+
+9. Customize `sylius_grid` to add `app_admin_emailConfig` route, fields mapping and actions.
+
+10. Adding the ability to custom any emails from the base sylius `Sylius\Bundle\CoreBundle\Mailer\Emails`. 
+
 
  

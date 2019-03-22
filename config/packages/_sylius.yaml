@@ -11,7 +11,7 @@ parameters:
     
 sylius_grid:
     grids:
-        app_admin_emailCofnig:
+        app_admin_emailConfig:
             driver:
                 name: doctrine/orm
                 options:
@@ -24,16 +24,17 @@ sylius_grid:
                 subject:
                     type: string
                     label: sylius.ui.subject
-                
+                    
                 body:
-                    type: string
-                    label: sylius.ui.body
-
-                type:
                     type: twig
-                    label: sylius.ui.type
+                    label: app.ui.body
                     options:
-                        template: "@SyliusUi/Grid/Field/enabled.html.twig"
+                        template: _body.html.twig
+                        
+                emailType:
+                    type: string
+                    label: app.ui.emailType
+
             actions:
                 main:
                     create:
@@ -45,10 +46,11 @@ sylius_grid:
                         type: delete
 sylius_resource:
     resources:
-        app.emailCofnig:
+        app.emailConfig:
             driver: doctrine/orm
             classes:
                 model: App\Entity\EmailConfig\EmailConfig
+                form: App\Form\Type\EmailConfigType
                 
 sylius_addressing:
     resources:

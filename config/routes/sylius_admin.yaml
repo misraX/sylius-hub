@@ -2,17 +2,17 @@ sylius_admin:
     resource: "@SyliusAdminBundle/Resources/config/routing.yml"
     prefix: /admin
 
-app_admin_emailCofnig:
+app_admin_emailConfig:
     prefix: /admin
     resource: |
-        alias: app.emailCofnig
+        alias: app.emailConfig
         section: admin
         templates: SyliusAdminBundle:Crud
         redirect: update
-        grid: app_admin_emailCofnig
+        grid: app_admin_emailConfig
         vars:
             all:
-                subheader: admin_email_configuration.ui.emailCofnigs
+                subheader: app.ui.emailConfigs
             index:
-                icon: 'file image outline'
+                icon: 'inbox'
     type: sylius.resource

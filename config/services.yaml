@@ -2,7 +2,9 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en_US
-
+    app.model.emailConfig.class: App\Entity\EmailConfig\EmailConfig
+    app.emailConfig.form.type.validation_groups: [sylius]
+    
 services:
     # Default configuration for services in *this* file
     _defaults:
@@ -29,11 +31,6 @@ services:
         tags: ['controller.service_arguments']
 
     # Custom sylius forms
-    app.form.type.order:
-        class: App\Form\Type\CustomOrderConfirmationType
-        tags:
-            - { name: form.type }
-
     app.listener.admin.menu_builder:
         class: App\Menu\EmailConfig\EmailConfigMenuListener
         tags:
@@ -41,8 +38,8 @@ services:
 
     sylius.email_manager.order:
         class: App\EmailManager\OrderEmailManager
-
-#    sylius.listener.order_complete:
-#        class: App\EventListener\OrderCompleteListener
-#        tags:
-#            - { name: kernel.event_listener, event: ylius.order.post_complete }
+        
+    app_admin_emailConfig.formtype:
+        class: App\Form\Type\EmailConfigType
+        tags:
+            - { name: form.type }

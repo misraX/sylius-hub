@@ -29,7 +29,7 @@ final class EmailConfigMenuListener
 
         $configurationSubmenu
             ->addChild('new-subitem', [
-                'route' => 'app_admin_emailCofnig_index',
+                'route' => 'app_admin_emailConfig_index',
             ])
             ->setLabel('admin_email_configuration.menu.admin.main.configurations.emails')
             ->setLabelAttributes([

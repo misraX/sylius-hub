@@ -4,5 +4,11 @@ admin_email_configuration:
             main:
                 configurations:
                     emails: Emails
+    
+app:
     ui:
-       emailCofnigs: Emails
+        emailType: Email
+        body: Body
+        emailConfigs: Emails Configuration
+        edit_emailConfig: Edit Emails Configuration
+        new_emailConfig: New Emails Configuration
