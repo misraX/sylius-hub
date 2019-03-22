@@ -60,7 +60,6 @@ class EmailConfig implements EmailConfigInterface
             return $emailTypes;
         }
         return $emailTypeskeys;
-
     }
 
     /**
@@ -125,5 +124,4 @@ class EmailConfig implements EmailConfigInterface
     {
         $this->emailType = $emailType;
     }
-
 }

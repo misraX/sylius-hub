@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: misrax
- * Date: 3/22/19
- * Time: 5:39 PM
- */
 
 namespace App\EmailManager;
-
 
 use App\Entity\EmailConfig\EmailConfig;
 use Doctrine\ORM\EntityManagerInterface;
@@ -45,7 +38,8 @@ final class OrderEmailManager implements OrderEmailManagerInterface
     public function sendConfirmationEmail(OrderInterface $order): void
     {
         $emailConfig = $this->entityManager->getRepository(EmailConfig::class);
-        $configuration = $emailConfig->findOneBy(['emailType'=>Emails::ORDER_CONFIRMATION]);
+        // Find by emailType, a unique type of any email configuration.
+        $configuration = $emailConfig->findOneBy(['emailType' => Emails::ORDER_CONFIRMATION]);
         $this->emailSender->send(Emails::ORDER_CONFIRMATION, [$order->getCustomer()->getEmail()], ['order' => $order, 'configuration' => $configuration]);
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Menu\EmailConfig;
 
-
 use Knp\Menu\ItemInterface;
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 
@@ -35,6 +34,5 @@ final class EmailConfigMenuListener
             ->setLabelAttributes([
                 'icon' => 'inbox ',
             ]);
-
     }
 }

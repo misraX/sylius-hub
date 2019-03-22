@@ -8,7 +8,6 @@
 
 namespace App\Entity\EmailConfig;
 
-
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TimestampableInterface;
 
@@ -18,5 +17,4 @@ use Sylius\Component\Resource\Model\TimestampableInterface;
  */
 interface EmailConfigInterface extends ResourceInterface, TimestampableInterface
 {
-
 }

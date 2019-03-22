@@ -18,5 +18,4 @@ class EmailConfigRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, EmailConfig::class);
     }
-
 }
