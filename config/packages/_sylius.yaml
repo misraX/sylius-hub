@@ -17,9 +17,9 @@ sylius_grid:
                 options:
                     class: App\Entity\EmailConfig\EmailConfig
             fields:
-                id:
+                emailType:
                     type: string
-                    label: sylius.ui.id
+                    label: app.ui.emailType
                     
                 subject:
                     type: string
@@ -31,10 +31,6 @@ sylius_grid:
                     options:
                         template: _body.html.twig
                         
-                emailType:
-                    type: string
-                    label: app.ui.emailType
-
             actions:
                 main:
                     create:
