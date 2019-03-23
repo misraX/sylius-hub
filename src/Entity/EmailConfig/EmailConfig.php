@@ -24,7 +24,7 @@ class EmailConfig implements EmailConfigInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      * @Assert\NotBlank
      */
     private $body;
@@ -37,7 +37,7 @@ class EmailConfig implements EmailConfigInterface
     private $emailType;
 
     /**
-     * @ORM\Column(type="string", length=1000)
+     * @ORM\Column(type="string", length=500)
      * @Assert\NotBlank
      */
     private $subject;
