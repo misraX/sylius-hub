@@ -29,7 +29,13 @@ services:
     App\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
-
+        
+    # app twig extenstion
+    app.twig.extension.loader:
+        class: Twig\Extension\StringLoaderExtension
+        tags:
+            - { name: 'twig.extension' }
+   
     # Custom sylius forms
     app.listener.admin.menu_builder:
         class: App\Menu\EmailConfig\EmailConfigMenuListener

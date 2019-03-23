@@ -3,11 +3,13 @@
 namespace App\EmailManager;
 
 use App\Entity\EmailConfig\EmailConfig;
+use App\Entity\Order\Order;
 use Doctrine\ORM\EntityManagerInterface;
 use Sylius\Bundle\ShopBundle\EmailManager\OrderEmailManagerInterface;
 use Sylius\Bundle\CoreBundle\Mailer\Emails;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Mailer\Sender\SenderInterface;
+use Twig\Environment;
 
 /**
  * Class OrderEmailManager
@@ -15,9 +17,12 @@ use Sylius\Component\Mailer\Sender\SenderInterface;
  */
 final class OrderEmailManager implements OrderEmailManagerInterface
 {
+    /**
+     * @var Environment
+     */
+    private static $environment;
     /** @var SenderInterface */
     private $emailSender;
-
     /** @var EntityManagerInterface */
     private $entityManager;
 
@@ -26,10 +31,11 @@ final class OrderEmailManager implements OrderEmailManagerInterface
      * @param SenderInterface $emailSender
      * @param EntityManagerInterface $entityManager
      */
-    public function __construct(SenderInterface $emailSender, EntityManagerInterface $entityManager)
+    public function __construct(SenderInterface $emailSender, EntityManagerInterface $entityManager, Environment $environment)
     {
         $this->emailSender = $emailSender;
         $this->entityManager = $entityManager;
+        self::$environment = $environment;
     }
 
     /**

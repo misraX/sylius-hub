@@ -12,3 +12,5 @@ app:
         emailConfigs: Emails Configuration
         edit_emailConfig: Edit Emails Configuration
         new_emailConfig: New Emails Configuration
+        subject_help: "Add a custom subject, ex: {{ order.customer.email }} {{ order.customer.firstName }}"
+        body_help: "Add a custom body, ex: Order Number: {{ order.number }} <a href=\"{{ order.token }}\"><a/>"
