@@ -13,8 +13,7 @@ RUN apk add --no-cache \
 		file \
 		gettext \
 		git \
-		mariadb-client \
-	;
+		mariadb-client 
 
 ARG APCU_VERSION=5.1.11
 RUN set -eux; \
@@ -65,9 +64,9 @@ COPY docker/php/php.ini /usr/local/etc/php/php.ini
 COPY docker/php/php-cli.ini /usr/local/etc/php/php-cli.ini
 
 # https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
-ENV COMPOSER_MEMORY_LIMIT=-1
-RUN set -eux; \
-	composer global require "hirak/prestissimo:^0.3" --prefer-dist --no-progress --no-suggest --classmap-authoritative; \
+ENV COMPOSER_ALLOW_SUPERUSER=1
+RUN set -eux \
+	composer global require "hirak/prestissimo:^0.3" --prefer-dist --no-progress --no-suggest --classmap-authoritative \
 	composer clear-cache
 ENV PATH="${PATH}:/root/.composer/vendor/bin"
 
@@ -78,7 +77,7 @@ ARG APP_ENV=prod
 
 # prevent the reinstallation of vendors at every changes in the source code
 COPY composer.json composer.lock symfony.lock ./
-RUN set -eux; \
+RUN set -eux \
 	composer install --prefer-dist --no-autoloader --no-scripts --no-progress --no-suggest; \
 	composer clear-cache
 
@@ -118,8 +117,7 @@ RUN set -eux; \
 		gcc \
 		git \
 		make \
-		python \
-	;
+		python
 
 # prevent the reinstallation of vendors at every changes in the source code
 COPY package.json yarn.lock ./
