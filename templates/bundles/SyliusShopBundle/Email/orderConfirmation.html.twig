@@ -7,14 +7,13 @@
 {% endblock %}
 
 {% block body %}
-    {{ dump(parseSubject) }}
+    {% set url = order.channel.hostname is not null ? 'http://' ~ order.channel.hostname ~ path('sylius_shop_order_show', {'tokenValue': order.tokenValue, '_locale': order.localeCode}) : url('sylius_shop_order_show', {'tokenValue': order.tokenValue, '_locale': order.localeCode}) %}
     Your order no. {{ order.number }} has been successfully placed.
     <br/>
     {% if configuration and configuration.body %}
         {{ configuration.body|raw }}
         <br>
     {% else %}
-        {% set url = order.channel.hostname is not null ? 'http://' ~ order.channel.hostname ~ path('sylius_shop_order_show', {'tokenValue': order.tokenValue, '_locale': order.localeCode}) : url('sylius_shop_order_show', {'tokenValue': order.tokenValue, '_locale': order.localeCode}) %}
         {% autoescape %}
             <br/><br/>
             Thank you for shopping at our store!

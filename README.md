@@ -10,7 +10,7 @@ $ docker-compose exec php bin/console sylius:fixtures:load
 ```
 open http://localhost/admin login with user:sylius@example.com pass:sylius
 
-CustomEmails
+Custom Emails
 ------------
 
 1. Creating an `EmailConfig` model.
@@ -36,4 +36,10 @@ CustomEmails
 10. Adding the ability to custom any emails from the base sylius `Sylius\Bundle\CoreBundle\Mailer\Emails`. 
 
 
+NOTES
+-----
+
+- This feature is not restricted to order_confirmation email, it can override any of the sylius emails,
+but with the prober Email Manager.
  
+- Dynamic Twig vars will need more development to restric the variables or to add whitelisted vars.
