@@ -10,6 +10,10 @@ $ docker-compose exec php bin/console sylius:fixtures:load
 ```
 open http://localhost/admin login with user:sylius@example.com pass:sylius
 
+For email config: http://localhost/admin/emailconfigs/
+
+*he project has been built using: https://github.com/Sylius/Sylius-Standard*
+
 Custom Emails
 ------------
 
