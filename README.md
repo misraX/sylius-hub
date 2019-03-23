@@ -35,6 +35,9 @@ Custom Emails
 
 10. Adding the ability to custom any emails from the base sylius `Sylius\Bundle\CoreBundle\Mailer\Emails`. 
 
+![ListView](https://raw.githubusercontent.com/misraX/sylius-hub/master/screenshots/admin-index-listView.png?token=AKdlUVPWXF0GrbHFnn2TCMX_kD-oabQ0ks5clbaRwA%3D%3D)
+
+![createView](https://raw.githubusercontent.com/misraX/sylius-hub/master/screenshots/admin-create-createView.png?token=AKdlUXgPhNkGS5h6yxKZya8DK-HxWAiZks5clbcEwA%3D%3D)
 
 NOTES
 -----
