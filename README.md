@@ -35,14 +35,15 @@ Custom Emails
 
 10. Adding the ability to custom any emails from the base sylius `Sylius\Bundle\CoreBundle\Mailer\Emails`. 
 
+List index View, with actions (Edit, Delete, Create).
 ![ListView](https://raw.githubusercontent.com/misraX/sylius-hub/master/screenshots/admin-index-listView.png?token=AKdlUVPWXF0GrbHFnn2TCMX_kD-oabQ0ks5clbaRwA%3D%3D)
-
+Create View
 ![createView](https://raw.githubusercontent.com/misraX/sylius-hub/master/screenshots/admin-create-createView.png?token=AKdlUXgPhNkGS5h6yxKZya8DK-HxWAiZks5clbcEwA%3D%3D)
+Edit View
+![updateView](https://raw.githubusercontent.com/misraX/sylius-hub/master/screenshots/admin-edit-editView.png?token=AKdlUYVX-u2wlzr5DHQAKeIWHxSLEYqnks5clbemwA%3D%3D)
 
 NOTES
 -----
 
 - This feature is not restricted to order_confirmation email, it can override any of the sylius emails,
 but with the prober Email Manager.
- 
-- Dynamic Twig vars will need more development to restric the variables or to add whitelisted vars.
