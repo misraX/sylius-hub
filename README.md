@@ -41,7 +41,8 @@ Create View
 ![createView](https://raw.githubusercontent.com/misraX/sylius-hub/master/screenshots/admin-create-createView.png)
 Edit View
 ![updateView](https://raw.githubusercontent.com/misraX/sylius-hub/master/screenshots/admin-edit-editView.png)
-
+Inbox
+![iboxView](https://raw.githubusercontent.com/misraX/sylius-hub/master/screenshots/inbox-email.png)
 NOTES
 -----
 
