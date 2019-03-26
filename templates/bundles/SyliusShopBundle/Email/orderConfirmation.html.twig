@@ -11,7 +11,7 @@
     Your order no. {{ order.number }} has been successfully placed.
     <br/>
     {% if configuration and configuration.body %}
-        {{ configuration.body|raw }}
+        {{ include(template_from_string(configuration.body))|raw }}
         <br>
     {% else %}
         {% autoescape %}
